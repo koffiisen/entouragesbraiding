@@ -28,8 +28,8 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <link href="nanogallery2/css/nanogallery2.min.css" rel="stylesheet"
-          type="text/css">
+    <link href="nanogallery2/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+    <link href="nanogallery2/css/nanogallery2.woff.min.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -58,7 +58,7 @@
 
                     <a href="#"
                        class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                            class="icon-menu h3"></span></a>
+                                class="icon-menu h3"></span></a>
 
                 </div>
                 <div class="col-12 col-lg-6 ml-auto d-flex">
@@ -71,7 +71,7 @@
 
                     <div class="d-flex">
                         <a href="tel:+404-483-3565">404-483-3565 </a> <strong>/</strong> <a href="tel:+678-489-5882">
-                        678-489-5882</a>
+                            678-489-5882</a>
                     </div>
 
 
@@ -98,7 +98,7 @@
                                     <a href="services.html" class="nav-link text-left">Services</a>
                                 </li>
                                 <li class="active">
-                                    <a href="galleries.html" class="nav-link text-left">Galleries</a>
+                                    <a href="galleries.php" class="nav-link text-left">Galleries</a>
                                 </li>
                                 <li><a href="contact.html" class="nav-link text-left">Contact</a>
                                 </li>
@@ -117,16 +117,31 @@
 
     <div class="site-section">
         <div class="container">
-            <div class="row">
-                <div id="nanogallery2"></div>
+
+            <div ID="ngy2p" data-nanogallery2='{
+        "itemsBaseURL": "images/customers/",
+        "thumbnailWidth": "200",
+        "thumbnailLabel": {
+          "position": "overImageOnMiddle",
+          "display": false
+        },
+        "thumbnailHoverEffect2": "toolsSlideDown",
+        "thumbnailAlignment": "center",
+        "thumbnailLevelUp": true,
+        "thumbnailOpenImage": true
+      }'>
+                <?php
+                foreach (glob('images/customers/*') as $filename) {
+                    $p = pathinfo($filename);
+                    $href = $p['basename'];
+                    $fname = $p['basename'];
+                    echo "<a href='$href' data-ngthumb='$href' data-ngdesc=''>$fname</a>";
+                }
+                ?>
             </div>
+
         </div>
         <!-- END section -->
-
-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.9589806959502!2d-84.43773879999999!3d33.450375199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3c8ed16874818fe!2sEntourage&#39;s%20Braiding!5e0!3m2!1sfr!2sfr!4v1655537682515!5m2!1sfr!2sfr"
-                style="border:0;  height: 400px;width: 100%;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
         <div class="footer">
@@ -173,26 +188,8 @@
 <script src="js/jquery.fancybox.min.js"></script>
 <script src="js/jquery.sticky.js"></script>
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
-<script type="text/javascript" src="nanogallery2/jquery.nanogallery2.min.js"></script>
+<script type="text/javascript" src="nanogallery2/jquery.nanogallery2.core.min.js"></script>
 <script src="js/main.js"></script>
-<script>
-    $(document).ready(function () {
-
-        $("#nanogallery2").nanogallery2({
-            // ### gallery settings ###
-            thumbnailHeight: 150,
-            thumbnailWidth: 150,
-            itemsBaseURL: 'images/customers/',
-
-            // ### gallery content ###
-            items: [
-                {src: 'chantal.jpg', srct: 'chantal.jpg', title: 'chantal'},
-                {src: 'kaye.jpg', srct: 'kaye.jpg', title: 'kaye'},
-                {src: 'shana.jpg', srct: 'shana.jpg', title: 'shana'}
-            ]
-        });
-    });
-</script>
 
 
 </body>
